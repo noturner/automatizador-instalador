@@ -1,0 +1,68 @@
+AVELL – INSTALADOR 
+
+ARQUIVOS NECESSÁRIOS NA MESMA PASTA:
+- install-aistone-gx.ps1
+- OC56.exe
+- winpe.wim
+- Pasta Avell_Custom_Control com:
+  - avell_custom_gx.exe
+
+COMO USAR:
+1. Clique com o botão direito no arquivo .BAT do GX e escolha:
+   “Executar como administrador”.
+   (O BAT chama o install-aistone-gx.ps1.)
+
+2. Leia o aviso de conectividade:
+   - Se quiser, pressione qualquer tecla para continuar.
+   - Se não apertar nada, ele continua sozinho após 15 segundos.
+
+3. Aguarde todas as etapas terminarem.
+   - Não feche a janela do PowerShell.
+   - Não desligue o notebook.
+
+O QUE O INSTALADOR FAZ (RESUMO DAS ETAPAS):
+1. Verifica se todos os arquivos necessários estão presentes.
+   - Se faltar algo, mostra erro e encerra o processo.
+
+2. (Se necessário) Desbloqueia o PowerShell para permitir execução de scripts.
+   - Se não conseguir, registra um aviso e segue.
+
+3. Instala o SDK AISTONE GX em modo silencioso (sem abrir janelas).
+   - Usa parâmetros /S /SILENT /VERYSILENT /SUPPRESSMSGBOXES /NORESTART.
+   - Aguarda o tempo necessário para o SDK instalar.
+   - Tenta até 3 vezes.
+   - Se não conseguir instalar o SDK, o instalador é interrompido.
+   - Ao final, remove o atalho “Avell Custom Control” da área de trabalho.
+
+4. Cria a partição de recuperação R: com 30 GB.
+   - Reduz a unidade C: em 30 GB.
+   - Cria e formata a partição R: (nome RECOVERY).
+   - Se a unidade R: já existir, ele não cria novamente.
+
+5. Oculta a unidade R: no Explorador de Arquivos.
+   - Assim o usuário não acessa acidentalmente a partição de recovery.
+
+6. Aplica a imagem de recuperação (winpe.wim) na unidade R:.
+   - Se já existir o sistema de recovery lá, não reaplica.
+   - Usa o DISM para aplicar a imagem.
+
+7. Instala o AVELL One Control em modo silencioso.
+   - Tenta até 3 vezes.
+   - Trata inclusive o erro -1073741819, tentando instalar de novo.
+   - Considera sucesso quando encontra:
+     C:\Users\SEU_USUARIO\AppData\Local\Programs\Avell One Control\Avell One Control.exe
+   - Depois remove o atalho “Avell One Control” da área de trabalho (usuário e público).
+
+8. Reinicia o computador automaticamente.
+
+ARQUIVO DE LOG:
+- Nome: install.log
+- Local: mesma pasta do instalador.
+- Contém todo o histórico das etapas.
+
+SE HOUVER ERRO:
+1. Leia com atenção o que aparece no PowerShell.
+2. Verifique o arquivo install.log para saber em qual etapa deu problema.
+3. Corrija a causa (espaço em disco, arquivo ausente, etc.).
+4. Reinicie o equipamento se necessário.
+5. Rode o instalador novamente, sempre desde o início.
