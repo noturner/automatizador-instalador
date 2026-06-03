@@ -7,9 +7,9 @@ Esta versão cuida de toda a configuração do ambiente de recuperação e da in
 ## O que o instalador faz
 
 - Cria e configura automaticamente a **partição de recuperação (R:)**
-- Aplica a imagem de recuperação **AVELL WinPE** (`winpe.wim`)
+- Aplica a imagem de recuperação **WinPE** (`winpe.wim`)
 - Configura o **Windows Boot Manager** com a entrada de recuperação:
-  - Descrição: `Recuperar-Windows-Avell`
+  - Descrição: `Recuperar-Windows`
   - Uso de GUID da partição para maior robustez
 - Instala o **aplicativo puro** em modo silencioso (até 5 tentativas)
 - Reinicia o sistema automaticamente ao final
