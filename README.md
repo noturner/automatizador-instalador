@@ -1,6 +1,4 @@
-# Instalador AVELL One Control – Sem SDK
-
-Instalador automatizado do **AVELL One Control** para máquinas que **já possuem o SDK/hardware configurado e funcionando**.
+# Instalador 
 
 Esta versão cuida de toda a configuração do ambiente de recuperação e da instalação do AVELL One Control, **sem instalar nenhum SDK ou driver adicional**.
 
@@ -13,7 +11,7 @@ Esta versão cuida de toda a configuração do ambiente de recuperação e da in
 - Configura o **Windows Boot Manager** com a entrada de recuperação:
   - Descrição: `Recuperar-Windows-Avell`
   - Uso de GUID da partição para maior robustez
-- Instala o **AVELL One Control** em modo silencioso (até 5 tentativas)
+- Instala o **aplicativo puro** em modo silencioso (até 5 tentativas)
 - Reinicia o sistema automaticamente ao final
 
 ---
